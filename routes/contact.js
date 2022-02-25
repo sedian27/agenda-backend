@@ -12,6 +12,7 @@ router.post(
   controller.addContact
 );
 router.get("/list", controller.listContact);
+router.get("/isFull", controller.isFull);
 router.get("/search/:name?", controller.searchContact);
 router.delete("/delete/:_id", controller.deleteContact);
 
