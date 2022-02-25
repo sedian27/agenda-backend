@@ -22,7 +22,7 @@ const existingContact = async (req, res, next) => {
 
 const maxCapacity = async (req, res, next) => {
   const isFull = await Contact.find();
-  if (isFull.length === 9)
+  if (isFull.length === 10)
     return res.status(400).send({ message: "Contacts are full" });
   next();
 };
