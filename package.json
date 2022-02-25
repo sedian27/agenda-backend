@@ -5,14 +5,14 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon ./index.js"
+    "start": "nodemon index.js"
   },
   "author": "ColpeDev",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
-    "Express": "^3.0.1",
+    "express": "^4.17.3",
     "mongoose": "^6.2.3"
   },
   "devDependencies": {
