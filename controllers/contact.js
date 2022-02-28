@@ -48,10 +48,24 @@ const isFull = async (req, res) => {
     .status(200)
     .send({ message: `You can add ${10 - capacity.length} Contacts` });
 };
+
+const updateContact = async (req, res) => {
+  const result = await Contact.findByIdAndUpdate(req.body._id, {
+    name: req.body.name,
+    phone: req.body.phone,
+    mobile: req.body.mobile,
+  });
+
+  return result
+    ? res.status(200).send({ message: "Contact updated successfully" })
+    : res.status(500).send({ message: "Failed to update contact" });
+};
+
 export default {
   addContact,
   listContact,
   searchContact,
   deleteContact,
   isFull,
+  updateContact,
 };

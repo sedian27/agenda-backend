@@ -29,7 +29,13 @@ const maxCapacity = async (req, res, next) => {
 };
 
 const validId = async (req, res, next) => {
-  const isIdValid = mongoose.Types.ObjectId.isValid(req.params["_id"]);
+  let isIdValid;
+
+  if (req.params["_id"])
+    isIdValid = mongoose.Types.ObjectId.isValid(req.params["_id"]);
+
+  if (req.body._id) isIdValid = mongoose.Types.ObjectId.isValid(req.body._id);
+
   return !isIdValid ? res.status(400).send({ message: "Invalid id" }) : next();
 };
 

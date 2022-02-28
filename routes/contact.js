@@ -14,6 +14,13 @@ router.post(
 router.get("/list", controller.listContact);
 router.get("/isFull", controller.isFull);
 router.get("/search/:name?", controller.searchContact);
+router.put(
+  "/update",
+  contactMidd.validContact,
+  contactMidd.validId,
+  contactMidd.existingContact,
+  controller.updateContact
+);
 router.delete("/delete/:_id", contactMidd.validId, controller.deleteContact);
 
 export default router;
