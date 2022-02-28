@@ -1,4 +1,5 @@
 import Contact from "../models/contact.js";
+import mongoose from "mongoose";
 
 const validContact = (req, res, next) => {
   if (!req.body.name)
@@ -27,4 +28,9 @@ const maxCapacity = async (req, res, next) => {
   next();
 };
 
-export default { validContact, existingContact, maxCapacity };
+const validId = async (req, res, next) => {
+  const isIdValid = mongoose.Types.ObjectId.isValid(req.params["_id"]);
+  return !isIdValid ? res.status(400).send({ message: "Invalid id" }) : next();
+};
+
+export default { validContact, existingContact, maxCapacity, validId };

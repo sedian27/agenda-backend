@@ -43,11 +43,10 @@ const isFull = async (req, res) => {
   const capacity = await Contact.find();
   if (capacity.length >= 10) {
     return res.status(200).send({ message: "Contacs are full" });
-  } else {
-    return res
-      .status(200)
-      .send({ message: `You can add ${10 - capacity.length} Contacts` });
   }
+  return res
+    .status(200)
+    .send({ message: `You can add ${10 - capacity.length} Contacts` });
 };
 export default {
   addContact,
