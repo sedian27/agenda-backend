@@ -13,7 +13,7 @@ const validContact = (req, res, next) => {
 const existingContact = async (req, res, next) => {
   const contact = await Contact.findOne({ name: req.body.name });
 
-  if (contact)
+  if (contact && contact._id != req.body._id)
     return res
       .status(400)
       .send({ message: "This contact is already registered" });
